@@ -3,12 +3,13 @@ import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
+import Navbar from "./components/NavBar";
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
     friends,
-    topscore:0,
+    highscore:0,
     score:0, 
   };
 
@@ -18,7 +19,8 @@ class App extends Component {
     // Set this.state.friends equal to the new friends array
     friends.sort( () => Math.random() - 0.5);
     // this.state.score++;
-    this.setState({ friends, score: this.state.score +1 });
+    this.setState({ friends, score: this.state.score +1, });
+
     
   };
 
@@ -26,16 +28,20 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
+        <Navbar 
+        score={this.state.score}
+        highscore={this.state.highscore}
+        />
         <Title>Friends List {this.state.score} </Title>
         {this.state.friends.map(friend => (
           <FriendCard
             removeFriend={this.removeFriend}
             id={friend.id}
             key={friend.id}
-            name={friend.name}
+            // name={friend.name}
             image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
+            // occupation={friend.occupation}
+            // location={friend.location}
           />
         ))}
       </Wrapper>
