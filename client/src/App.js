@@ -10,19 +10,34 @@ class App extends Component {
   state = {
     friends,
     highscore:0,
-    score:0, 
+    score:0
   };
 
-  removeFriend = id => {
+  removeFriend= id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
     // const friends = this.state.friends.filter(friend => friend.id !== id);
     // Set this.state.friends equal to the new friends array
     friends.sort( () => Math.random() - 0.5);
     // this.state.score++;
     this.setState({ friends, score: this.state.score +1, });
+    this.setState({highscore: this.state.highscore +1});
+  //   this.setState(prevState => {
+  //     const friendsinfo = prevState.friendsinfo.map(friends => {
+  //       if (friends.id === id) {
+  //         friends.clicked = true;
+  //         console.log(friends);
+  //     } return friends;
+  //   });
+  //   return{
+  //     friends: friendsinfo
+  //   }
+  //   // this.setState({ clicked: !this.state.clicked});
+  // })
+};
 
-    
-  };
+  booleanFriend = clicked => {
+     this.setState({clicked: !this.state.clicked});
+   }
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
@@ -36,12 +51,12 @@ class App extends Component {
         {this.state.friends.map(friend => (
           <FriendCard
             removeFriend={this.removeFriend}
+            booleanFriend={this.booleanFriend}
+            clicked={this.state.clicked}
+            nickname={friend.nickname}
             id={friend.id}
             key={friend.id}
-            // name={friend.name}
             image={friend.image}
-            // occupation={friend.occupation}
-            // location={friend.location}
           />
         ))}
       </Wrapper>
