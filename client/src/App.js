@@ -20,19 +20,19 @@ class App extends Component {
     friends.sort( () => Math.random() - 0.5);
     // this.state.score++;
     this.setState({ friends, score: this.state.score +1, });
-    this.setState({highscore: this.state.highscore +1});
-  //   this.setState(prevState => {
-  //     const friendsinfo = prevState.friendsinfo.map(friends => {
-  //       if (friends.id === id) {
-  //         friends.clicked = true;
-  //         console.log(friends);
-  //     } return friends;
-  //   });
-  //   return{
-  //     friends: friendsinfo
-  //   }
-  //   // this.setState({ clicked: !this.state.clicked});
-  // })
+    this.setState({ highscore: this.state.highscore +1});
+    this.setState(prevState => {
+       const friendsinfo = prevState.friends.map(friends => {
+         if (friends.id === id) {
+           friends.clicked = true;
+           console.log(friends);
+       } return friends;
+     });
+     return{
+       friends: friendsinfo
+     }
+     // this.setState({ clicked: !this.state.clicked});
+   })
 };
 
   booleanFriend = clicked => {
