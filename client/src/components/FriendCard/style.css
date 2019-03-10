@@ -1,10 +1,10 @@
 .card {
   background: #fff;
   border-radius: 2px;
-  height: auto;
+  height: 150px;
   margin: 1rem;
   position: relative;
-  width: 20%;
+  width: 170px;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   text-align: left;
 }
@@ -37,7 +37,7 @@
 }
 
 .card > .remove {
-  color: #ff1744;
+  color: grey;
   font-size: 48px;
   position: absolute;
   top: -20px;
@@ -46,5 +46,5 @@
 }
 
 .card > .remove:hover {
-  color: #d50000;
+  color: grey;
 }
